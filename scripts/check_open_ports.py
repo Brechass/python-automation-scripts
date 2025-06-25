@@ -1,3 +1,5 @@
+# scripts/check_open_ports.py
+
 import socket
 from tqdm import tqdm
 
