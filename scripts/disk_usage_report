@@ -1,0 +1,48 @@
+# scripts/disk_usage_report.py
+
+import os
+
+def get_size(path):
+    total = 0
+    for dirpath, dirnames, filenames in os.walk(path):
+        for f in filenames:
+            try:
+                fp = os.path.join(dirpath, f)
+                total += os.path.getsize(fp)
+            except:
+                pass
+    return total
+
+def human_readable(size_bytes):
+    if size_bytes >= 1 << 30:
+        return f"{size_bytes / (1 << 30):.2f} GB"
+    elif size_bytes >= 1 << 20:
+        return f"{size_bytes / (1 << 20):.2f} MB"
+    elif size_bytes >= 1 << 10:
+        return f"{size_bytes / (1 << 10):.2f} KB"
+    else:
+        return f"{size_bytes} B"
+
+def disk_usage_report(base_path):
+    print(f"\nAnalizando uso de disco en: {base_path}\n")
+
+    results = []
+
+    for item in os.listdir(base_path):
+        item_path = os.path.join(base_path, item)
+        if os.path.isdir(item_path):
+            size = get_size(item_path)
+            results.append((item, size))
+
+    results.sort(key=lambda x: x[1], reverse=True)
+
+    print(f"{'Carpeta':<30} Tamaño")
+    print("-" * 45)
+    for name, size in results:
+        print(f"{name:<30} {human_readable(size)}")
+
+if __name__ == "__main__":
+    path = input("Introduce la ruta que quieres analizar (o pulsa Enter para usar tu carpeta home): ")
+    if not path:
+        path = os.path.expanduser("~")
+    disk_usage_report(path)
