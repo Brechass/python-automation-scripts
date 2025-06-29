@@ -1,21 +1,21 @@
 # python-automation-scripts
 
-Este repositorio contiene scripts útiles de automatización desarrollados con Python.
+This repository contains useful automation scripts developed in Python.
 
-Todos ellos están pensados para tareas reales que pueden servir en entornos de administración de sistemas, scraping de datos o ciberseguridad básica.
+All of them are designed for real-world tasks that can be useful in system administration, data scraping, or basic cybersecurity contexts.
 
-## Scripts incluidos:
+## Included Scripts:
 
-| Script                  | Descripción |
-|------------------------|-------------|
-| scrape_news.py         | Scraper que extrae titulares de El País |
-| auto_log_cleaner.py    | Borra logs antiguos en `/var/log` según antigüedad |
-| disk_usage_report.py   | Muestra el uso de disco por directorio (Analiza cuánto ocupa cada carpeta dentro de una ruta), útil para admins |
-| check_open_ports.py    | Escanea puertos abiertos en una IP (TCP) [Con barra de progreso) |
+| Script                | Description |
+|----------------------|-------------|
+| scrape_news.py       | Scraper that extracts headlines from El País |
+| auto_log_cleaner.py  | Deletes old logs in `/var/log` based on age |
+| disk_usage_report.py | Displays disk usage by directory (analyzes how much space each folder within a given path occupies), useful for sysadmins |
+| check_open_ports.py  | Scans open TCP ports on a given IP (with progress bar) |
 
-## Requisitos
+## Requirements
 
-Instala las dependencias:
+Install the dependencies:
 
 ```bash
 pip install -r requirements.txt
